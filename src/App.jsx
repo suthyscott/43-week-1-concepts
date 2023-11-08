@@ -1,9 +1,13 @@
 import './App.css';
 import Child from './Child';
 import Item from './Item';
+import { useState } from 'react';
 
 function App() {
-  const items = ['bread', 'milk', 'apple', 'eggs']
+  const [items, setItems] = useState(['bread', 'milk', 'apple', 'eggs'])
+  const [newItem, setNewItem] = useState('')
+
+  console.log(newItem)
   return (
     <div className="App">
       <h1>App.js</h1>
@@ -13,10 +17,11 @@ function App() {
       <Item item={items[2]}/>
       <Item item={items[3]}/>
       <Item item={items[4]}/>
+      <Item item={items[5]}/>
 
       <div>
-        {/* <input /> */}
-        <button onClick={() => items.push('juice')}>Add juice</button>
+        <input onChange={event => setNewItem(event.target.value)} />
+        <button onClick={() => setItems([newItem, ...items])}>Add Item</button>
       </div>
     </div>
   );
