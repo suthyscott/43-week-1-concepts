@@ -1,30 +1,32 @@
-import './App.css';
-import Child from './Child';
-import Item from './Item';
-import { useState } from 'react';
+import "./App.css"
+import Child from "./Child"
+import Item from "./Item"
+import Form from './Form'
+import { useState } from "react"
 
 function App() {
-  const [items, setItems] = useState(['bread', 'milk', 'apple', 'eggs'])
-  const [newItem, setNewItem] = useState('')
+    const [items, setItems] = useState(["bread", "milk", "apple", "eggs"])
 
-  console.log(newItem)
-  return (
-    <div className="App">
-      <h1>App.js</h1>
-      {/* <Child username={'scott'} userId={343}/> */}
-      <Item item={items[0]}/>
-      <Item item={items[1]}/>
-      <Item item={items[2]}/>
-      <Item item={items[3]}/>
-      <Item item={items[4]}/>
-      <Item item={items[5]}/>
+    const deleteItem = index => {
+      items.splice(index, 1)
+      setItems([...items])
+    }
 
-      <div>
-        <input onChange={event => setNewItem(event.target.value)} />
-        <button onClick={() => setItems([newItem, ...items])}>Add Item</button>
-      </div>
-    </div>
-  );
+    // const itemsList = items.map((element, index) => {
+    //   return <Item item={element}/>
+    // })
+
+    return (
+        <div className="App">
+            <h1>App.js</h1>
+
+            {items.map((element, index) => {
+                return <Item item={element} deleteItem={deleteItem} index={index}/>
+            })}
+
+            <Form items={items} setItems={setItems}/>
+        </div>
+    )
 }
 
-export default App;
+export default App

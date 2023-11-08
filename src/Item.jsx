@@ -1,8 +1,8 @@
-const Item = ({item}) => {
+const Item = ({item, deleteItem, index}) => {
     return (
         <div>
-            <h3>Item.jsx</h3>
             <p>{item}</p>
+            <button onClick={() => deleteItem(index)}>Delete</button>
         </div>
     )
 }
