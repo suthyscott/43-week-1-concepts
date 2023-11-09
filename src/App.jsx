@@ -1,7 +1,7 @@
 import "./App.css"
-import Child from "./Child"
-import Item from "./Item"
-import Form from './Form'
+import Child from "./components/Child"
+import Item from "./components/Item"
+import Form from './components/Form'
 import { useState } from "react"
 
 function App() {
@@ -17,15 +17,17 @@ function App() {
     // })
 
     return (
-        <div className="App">
+        <main className="App">
             <h1>App.js</h1>
 
+            <section>
             {items.map((element, index) => {
                 return <Item item={element} deleteItem={deleteItem} index={index}/>
             })}
+            </section>
 
             <Form items={items} setItems={setItems}/>
-        </div>
+        </main>
     )
 }
 
