@@ -12,17 +12,21 @@ function App() {
       setItems([...items])
     }
 
+    const updateItem = (index, newVal) => {
+        items.splice(index, 1, newVal)
+        setItems([...items])
+    }
+
     // const itemsList = items.map((element, index) => {
     //   return <Item item={element}/>
     // })
 
     return (
         <main className="App">
-            <h1>App.js</h1>
 
             <section>
             {items.map((element, index) => {
-                return <Item item={element} deleteItem={deleteItem} index={index}/>
+                return <Item item={element} deleteItem={deleteItem} index={index} updateItem={updateItem}/>
             })}
             </section>
 
